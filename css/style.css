@@ -1,0 +1,372 @@
+/* --- Autumn Leaves - style.css --- */
+
+/* 1. Variables de Diseño (Paleta Otoñal) */
+:root {
+  /* Colores de Fondo y Paneles */
+  --color-bg: #fdf6ec;           /* Crema almendra suave */
+  --color-card: #ffffff;         /* Blanco puro para las notas */
+  --color-border: #eaddcf;       /* Beige suave para líneas */
+  
+  /* Colores de Acento */
+  --color-primary: #b05b3b;      /* Terracota (femenino y cálido) */
+  --color-primary-hover: #8e492f;
+  --color-secondary: #d4a373;    /* Mostaza suave */
+  --color-accent: #6b705c;       /* Verde musgo seco */
+  
+  /* Colores de Texto */
+  --color-text-main: #3f2e2e;    /* Marrón chocolate oscuro */
+  --color-text-muted: #8c7878;   /* Marrón grisáceo suave */
+  
+  /* Estados */
+  --color-success: #6b705c;      /* Verde musgo */
+  --color-warning: #d4a373;      /* Mostaza */
+  --color-danger: #9e2a2b;       /* Rojo caldera */
+  
+  /* Fuentes */
+  --font-header: 'Playfair Display', serif;
+  --font-body: 'Quicksand', sans-serif;
+  
+  /* Sombras y Bordes */
+  --radius-card: 20px;
+  --radius-input: 12px;
+  --shadow-soft: 0 8px 30px rgba(176, 91, 59, 0.08);
+}
+
+/* 2. Estilos Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  padding: 20px;
+  /* Degradado sutil de fondo */
+  background-image: radial-gradient(circle at 10% 20%, rgba(212, 163, 115, 0.1) 0%, transparent 40%);
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 3. Header */
+.app-header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.app-header__title {
+  font-family: var(--font-header);
+  font-size: 3.2rem;
+  color: var(--color-primary);
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.app-header__subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* 4. Tarjetas (Cards) */
+.card {
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  padding: 30px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border);
+  transition: transform 0.3s ease;
+}
+
+/* 5. Formulario "Nueva Nota" */
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.note-form__label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+}
+
+.note-form__input {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: var(--radius-input);
+  border: 1.5px solid var(--color-border);
+  background-color: #fff;
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.note-form__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background-color: #fffaf7;
+  box-shadow: 0 0 0 4px rgba(176, 91, 59, 0.1);
+}
+
+.note-form__row--date {
+  max-width: 300px;
+}
+
+.note-form__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.note-form__actions-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* 6. Botones (Estilo Soft) */
+.btn {
+  padding: 12px 24px;
+  border-radius: var(--radius-input);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--solid {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn--solid:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(176, 91, 59, 0.2);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+.btn--outline:hover:not(:disabled) {
+  background-color: #fdf1ed;
+}
+
+.btn--text-danger {
+  background-color: transparent;
+  color: var(--color-danger);
+  padding: 12px 10px;
+}
+
+.btn--text-danger:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+/* 7. Lista de Notas e Ítems */
+.list-controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.list-controls__search { flex: 2; }
+.list-controls__filter { flex: 1; }
+
+.notelist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Estilo de la Tarea individual (La Nota) */
+.task {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.task--hover {
+  border-color: var(--color-secondary);
+  transform: translateX(4px);
+  box-shadow: 0 4px 15px rgba(212, 163, 115, 0.1);
+}
+
+.task__left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.task__title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--color-text-main);
+}
+
+.task__meta {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+/* Badges (Etiquetas Soft) */
+.badges-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #f0f0f0;
+  color: var(--color-text-muted);
+}
+
+.badge--ok {
+  background-color: #e9eddf; /* Verde musgo muy claro */
+  color: var(--color-success);
+}
+
+.badge--warn {
+  background-color: #fefae0; /* Mostaza muy claro */
+  color: #a68a39;
+}
+
+.badge--danger {
+  background-color: #f9ebe7; /* Terracota muy claro */
+  color: var(--color-danger);
+}
+
+.task__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 170px;
+}
+
+/* Botones dentro de la nota */
+.task__actions .btn {
+  width: 100%;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.btn--task-action {
+  background-color: #f5f0eb;
+  color: var(--color-text-main);
+}
+.btn--task-action:hover { background-color: #eadfc1; }
+
+.btn--task-danger {
+  background-color: #f9ebe7;
+  color: var(--color-danger);
+}
+.btn--task-danger:hover { background-color: #f2d5cd; }
+
+/* 8. Estados y Notificaciones */
+.helper-text {
+  min-height: 20px;
+  color: var(--color-danger);
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-muted);
+}
+
+.empty-state__icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.toast-notification {
+  text-align: center;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 24px;
+}
+
+/* 9. Responsivo */
+@media (max-width: 700px) {
+  .app-header__title { font-size: 2.5rem; }
+  .card { padding: 20px; }
+  
+  .note-form__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .note-form__actions-group {
+    flex-direction: column;
+  }
+  
+  .list-controls { flex-direction: column; }
+  
+  .task { flex-direction: column; }
+  .task__actions {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .task__actions .btn { flex: 1; }
+}
