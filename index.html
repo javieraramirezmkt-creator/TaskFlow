@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autumn Leaves - Notas y Tareas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="app-container">
+      <header class="app-header">
+        <h1 class="app-header__title">Autumn Leaves</h1>
+        <p class="app-header__subtitle">Organiza tus días con calma y estilo</p>
+      </header>
+
+      <section class="card card--form">
+        <form id="taskForm" class="note-form" autocomplete="off">
+          <div class="note-form__row">
+            <label class="note-form__label" for="taskDesc">¿Qué tienes en mente?</label>
+            <input
+              id="taskDesc"
+              class="note-form__input"
+              type="text"
+              placeholder="Ej: Preparar té de canela para la reunión"
+              required
+              minlength="3"
+            />
+          </div>
+
+          <div class="note-form__row note-form__row--date">
+            <label class="note-form__label" for="taskDeadline">Fecha límite (opcional)</label>
+            <input id="taskDeadline" class="note-form__input note-form__input--date" type="datetime-local" />
+          </div>
+
+          <div class="note-form__actions">
+            <button id="addBtn" class="btn btn--solid" type="submit">Añadir con Calma</button>
+            <div class="note-form__actions-group">
+              <button id="syncBtn" class="btn btn--outline" type="button" title="Importar sugerencias desde la nube">
+                Sincronizar API
+              </button>
+              <button id="clearBtn" class="btn btn--text-danger" type="button" title="Borrar todas las notas guardadas">
+                Limpiar Todo
+              </button>
+            </div>
+          </div>
+
+          <p id="helperText" class="helper-text" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="card card--list">
+        <div class="list-controls">
+          <div class="list-controls__search">
+            <input
+              id="searchInput"
+              class="note-form__input note-form__input--search"
+              type="text"
+              placeholder="Buscar en mis notas..."
+            />
+          </div>
+
+          <div class="list-controls__filter">
+            <select id="filterSelect" class="note-form__input note-form__input--select">
+              <option value="todas">Ver todas</option>
+              <option value="pendiente">Solo pendientes</option>
+              <option value="completada">Completadas</option>
+            </select>
+          </div>
+        </div>
+
+        <ul id="taskList" class="notelist" aria-label="Lista de notas personales"></ul>
+        
+        <div id="emptyState" class="empty-state">
+          <div class="empty-state__icon">🍂</div>
+          <p class="empty-state__text">No hay notas para hoy. Disfruta el momento o añade una nueva.</p>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <div id="toast" class="toast-notification" role="status" aria-live="polite"></div>
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
